@@ -1,0 +1,146 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f9;
+    height: 100vh;
+}
+
+.LoginHeader{
+    text-align:center;
+}
+
+#FontColor {
+  color: black;
+}
+
+#Background {
+    align-items: center;
+    font-size: xx-large;
+    font-family: 'Times New Roman', Times, serif;
+    color: #0f98f8;
+}
+
+#login .container #login-row #login-column #login-box {
+    background-color: #fff;
+    border-style: solid;
+    border-width: thin;
+    border-color: gainsboro;
+    border-radius: 50px;
+    box-shadow: 0px 0px 20px grey;
+    position: absolute;
+    margin-top: 40%;
+}
+
+#login .container #login-row #login-column #login-box #login-form
+{
+    padding: 20px;
+}
+
+#login .container #login-row #login-column #login-box #login-form #register-link
+{
+    margin-top: -85px;
+}
+
+#newhere {
+    color: #0f98f8;
+}
+
+.text-center text-white pt-5 {
+    color: #0f98f8;
+}
+
+#username {
+    border: 1px solid #0f98f8;
+    border-radius: 5px;
+}
+
+#password {
+    border: 1px solid #0f98f8;
+    border-radius: 5px;
+}
+
+#button {
+    cursor: pointer;
+    color: #fff;
+    font-size: 2vh;
+    border-radius: 30px;
+    font-family: sans-serif;
+    height: 30px;
+    background-color: #0f98f8;
+    border: 1px solid #0f98f8;
+    margin-top: 2%;
+    margin-left: 25%;
+}
+
+#button:hover {
+    border-color: black !important;
+    background-color: black !important;
+    transition: all 2s ease;
+    transform: rotateY(360deg);
+}
+
+
+@keyframes RotateF {
+    0% {
+        transform: rotateY(0deg);
+        /* rotate: 0deg; */
+    }
+
+
+    100% {
+        transform: rotateY(360deg);
+        /* rotate: 360deg; */
+    }
+}
+
+@keyframes RotateB {
+    0% {
+        transform: rotateY(0deg);
+        background-color: black;
+        /* rotate: 0deg; */
+    }
+
+    50% {
+        color: black;
+        background-color: gray;
+    }
+
+    100% {
+        transform: rotateY(-360deg);
+        background-color: #0f98f8;
+        /* rotate: -360deg; */
+    }
+}
+
+button:hover {
+    border-color: black !important;
+    cursor: pointer;
+    background-color: black !important;
+    transition: all 2s ease;
+    animation: RotateF 1.5s ease-in-out;
+}
+
+button:not(:hover) {
+    animation: RotateB 1.5s ease-in-out;
+}
+
+input[type="submit"]:hover {
+    border-color: black !important;
+    cursor: pointer;
+    background-color: black !important;
+    animation: RotateF 1s ease-in-out;
+    transition: all 2s ease;
+}
+
+input[type="submit"]:not(:hover) {
+    animation: RotateB 1.5s ease-in-out;
+}
+
+#creditos {
+        color: transparent;
+}
+
+#jogos {
+    color: #f7f7f9;
+}
+

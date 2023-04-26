@@ -1,0 +1,48 @@
+﻿@model Projeto_SIGO_Web.Models.OrdemDeServico
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Deletar</h2>
+
+<h3>Você deseja deletar essa Ordem de Serviço?</h3>
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoPagamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoPagamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CarroAtual.Marca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CarroAtual.Marca)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Voltar", "Index")
+        </div>
+    }
+</div>

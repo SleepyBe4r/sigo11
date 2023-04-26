@@ -1,0 +1,104 @@
+﻿@model Projeto_SIGO_Web.Models.ItensOrdem
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Deletar</h2>
+
+<h3>Você deseja deletar esse Item?</h3>
+<div>
+    <h4>ItensOrdem</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Garantia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Garantia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Desconto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Desconto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Obs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Obs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Defeito)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Defeito)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrdemDeServico.TipoPagamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrdemDeServico.TipoPagamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Produto.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Produto.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Servico.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Servico.Descricao)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Voltar", "Index")
+        </div>
+    }
+</div>

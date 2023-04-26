@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Projeto_SIGO_Web.Models.Marca>
+
+    @{
+    ViewBag.Title = "Index";
+    }
+
+    <h2>Lista de Marcas</h2>
+
+    <p>
+        @Html.ActionLink("Adicionar Marca", "Create", new { @class = "btn btn-outline-primary" } )
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>Ações</th>
+        </tr>
+
+        @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id=item.ID },  new { @class = "btn btn-primary" }) |
+                <button type="button" class="btn btn-danger" data-item="@item.ID">Excluir</button>
+            </td>
+        </tr>
+}
+
+    </table>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        <script src="~/js/Mascara.js"></script>
+        <script src="~/js/Marca.js"></script>
+    }

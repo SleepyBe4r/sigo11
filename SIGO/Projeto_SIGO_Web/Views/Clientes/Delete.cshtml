@@ -1,0 +1,93 @@
+﻿@model Projeto_SIGO_Web.Models.Cliente
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Deletar Cliente</h2>
+
+<h3>Você tem certeza que deseja deletar este cliente?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Celular)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Celular)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CPF_CNPJ)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPF_CNPJ)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco.Rua)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco.Rua)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco.Numero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco.Numero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco.Complementos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco.Complementos)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        @Html.ActionLink("Volta", "Index")
+    </div>
+    }
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        <script src="~/js/Mascara.js"></script>
+    }
+</div>

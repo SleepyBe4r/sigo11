@@ -1,0 +1,71 @@
+﻿@model Projeto_SIGO_Web.Models.Login
+
+@{
+    Layout = null;
+    ViewBag.Title = "Index";
+}
+
+<DOCTYPE html></DOCTYPE>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloundflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="~/css/Login.css" rel="stylesheet" />
+    <title>Login</title>
+
+</head>
+<body>
+    <div id="Login">
+        @*<h3 class="text-center text-white pt-5">Login</h3>*@
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                        @using (Html.BeginForm("Index", "Login", FormMethod.Post))
+                        {
+                        <form id="login-form" class="form" action="" method="post">
+                            <h3 class="loginHeader" id="FontColor">Bem vindo ao SIGO!</h3>
+                            <div class="form-group">
+                                <label for="username" id="FontColor">Usuário:</label><br>
+                                @Html.EditorFor(model => model.Usuario, new {htmlAttributes = new {@class = "form-control", @id ="username"} } )
+                                @Html.ValidationMessageFor(model => model.Usuario, "", new { @class = "text-danger" })
+                                @*<input type="text" name="username" id="username" class="form-control" />*@
+                            </div>
+                            <div class="form-group">
+                                <label for="password" id="FontColor">Senha:</label><br>
+                                @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control", @id = "password", type="password" } })
+                                @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+
+                                @*<input type="text" name="password" id="password" class="form-control" />*@
+                            </div>
+                            <div class="form-group">
+                                <label for="password" id="FontColor">Exibir senha</label>
+                                <input type="checkbox" onclick="mostrarOcultarSenha()"><br>
+                                <!--<label for="remember-me" class="text-info">-->
+                                @*<span>Lembre de mim</span> <span>
+                                        <input id="remember-me"
+                                               name="remember-me" type="checkbox" />
+                                    </span>*@
+                                <!--</label><br>-->
+
+                                <input type="submit" id="button" name="submitButton"  value="Voltar" />
+                                <input type="submit" id="button" name="submitButton"  value="Logar" />
+                            </div>
+
+                        </form>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <label id="Creditos">Tela de login feita por mim: Rocha_PP_018!</label><br />
+    <label><a class="text-black-50" id="jogo" href="https://www.friv.com/">.</a></label><br />
+    <label id="Creditos">Direitos do site: Alexandre, Cayo e Rocha.</label>
+    <script type="text/javascript" src="~/js/Senha.js"></script>
+</body>
+
+</html>

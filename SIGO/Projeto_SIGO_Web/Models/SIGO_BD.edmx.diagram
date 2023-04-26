@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="98dcfba8d6fe4e10b2a608e407a7c9e7" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="Projeto_SIGOModel.CarroAtual" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Projeto_SIGOModel.Cidade" Width="1.5" PointX="1.5" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Projeto_SIGOModel.Cliente" Width="1.5" PointX="1.5" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Projeto_SIGOModel.Endereco" Width="1.5" PointX="1.5" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Projeto_SIGOModel.Estado" Width="1.5" PointX="1.5" PointY="24.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Projeto_SIGOModel.Fornecedor" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="Projeto_SIGOModel.ItensOrdem" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Projeto_SIGOModel.Login" Width="1.5" PointX="3.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Projeto_SIGOModel.Marca" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Projeto_SIGOModel.OrdemDeServico" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Projeto_SIGOModel.Produto" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Projeto_SIGOModel.Servico" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Projeto_SIGOModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="Projeto_SIGOModel.FK__CarroAtua__IDCli__6ABAD62E" ManuallyRouted="false" />
+        <AssociationConnector Association="Projeto_SIGOModel.FK__OrdemDeSe__IDCar__02925FBF" ManuallyRouted="false" />
+        <AssociationConnector Association="Projeto_SIGOModel.FK__Endereco__IDCida__336AA144" ManuallyRouted="false" />
+        <AssociationConnector Association="Projeto_SIGOModel.FK_Cidade_Estado" ManuallyRouted="false" />
+        <AssociationConnector Association="Projeto_SIGOModel.FK__Cliente__IDEnder__67DE6983" ManuallyRouted="false" />
+        <AssociationConnector Association="Projeto_SIGOModel.FK__Login__IDCliente__10E07F16" ManuallyRouted="false" />
+        <AssociationConnector Association="Projeto_SIGOModel.FK__Produto__IDForne__6E8B6712" ManuallyRouted="false" />
+        <AssociationConnector Association="Projeto_SIGOModel.FK__ItensOrde__IDOrd__075714DC" ManuallyRouted="false" />
+        <AssociationConnector Association="Projeto_SIGOModel.FK__ItensOrde__IDPro__056ECC6A" ManuallyRouted="false" />
+        <AssociationConnector Association="Projeto_SIGOModel.FK__ItensOrde__IDSer__0662F0A3" ManuallyRouted="false" />
+        <AssociationConnector Association="Projeto_SIGOModel.FK__Produto__IDMarca__6D9742D9" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Projeto_SIGOModel.mensagem" Width="1.5" PointX="7.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,151 @@
+﻿@model IEnumerable<Projeto_SIGO_Web.Models.Produto>
+
+@{
+    Layout = null;
+    ViewBag.Title = "ProdutoServicos";
+}
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="~/fonts/FontAwesome/all.js"></script>
+    <link rel="stylesheet" href="~/css/Produtos.css">
+    <link rel="stylesheet" href="~/Content/bootstrap_5.0/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/HomeInicial.css" />
+    <link rel="icon" href="fas fa-basket-shopping" />
+    <title>Produtos</title>
+</head>
+    <body>
+        <header>
+            <div class="linha">
+                <div class="logo">
+                    <img src="~/Icons/SIGO_logoTipo.png" alt="">
+                </div>
+
+                <div class="h-middle"></div>
+                
+                <div class="h-right">
+                    <div class="botoes">
+                        <ul>
+                            <li><a href="#"><i class="fa-solid fa-user-plus"></i></a></li>
+                            <li><a href="/Login/Index"><i class="fa-solid fa-user"></i></a></li>
+                            <li><a href="HomeInicial"><i class="fas fa-house"></i></a></li>
+                            <li><button onclick="MenuOpen()"><i class="fas fa-list-ul"></i></button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <nav>
+                <ul class="box">
+                    <li class="line-close" onclick="MenuClose()"><a class="btn-close"><i class="fas fa-xmark"></i></a></li>
+                    <li><a href="#about-us">Sobre</a></li>
+                    <li><a href="#services">Serviços</a></li>
+                    <li><a href="#">Cadastrar</a></li>
+                    <li><a href="#">Logar</a></li>
+                    <li><a href="#contacts">Contatos</a></li>
+                </ul>
+            </nav>
+
+            
+
+                <div id="loader-wrapper">
+                    <div id="loader"></div>
+
+                    <div class="loader-section section-left"></div>
+                    <div class="loader-section section-right"></div>
+
+                </div>
+
+
+                <div class="tm-hero d-flex justify-content-center align-items-center" data-parallax="scroll">
+                    <h2 class="col-6 tm-text-primary">
+                        Produtos
+                    </h2>
+                    <form class="d-flex tm-search-form">
+                        @using (Html.BeginForm("ProdutoServicos", "Home", FormMethod.Get))
+                        {
+                            <p>
+                                <input name="Marca" class="form-control tm-search-input" type="search" placeholder="Pesquisa" aria-label="Search" />
+                                <input type="submit" value="Busca" class="btn btn-outline-success tm-search-btn" />
+                            </p>
+                        }
+                    </form>
+                </div>
+
+                <div class="container-fluid tm-container-content tm-mt-60">
+                    <div class="row tm-mb-90 tm-gallery">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
+                                <div class="d-flex justify-content-between tm-text-gray">
+                                    <div class="card">
+                                        <div class="card-img-top">
+                                            @if (item.Foto != null)
+                                            {
+                                                var base64 = Convert.ToBase64String(item.Foto);
+                                                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+
+                                                <img src='@imgSrc' style="max-width:100px; max-height:100px;" />
+                                            }
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="card-title">
+                                                <label>Produto</label> - @Html.DisplayFor(modelItem => item.Nome)
+                                            </div>
+                                            <div class="card-text">
+                                                <label>Descrição</label> - @Html.DisplayFor(modelItem => item.Descricao)
+                                            </div>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <label>Marca</label> - @Html.DisplayFor(modelItem => item.Marca.Nome)
+                                        </div>
+                                        <div class="list-group-item">
+                                            <label>R$</label>  @Html.DisplayFor(modelItem => item.Valor)
+                                        </div>
+                                        <div class="list-group-item">
+                                            <button type="button" class="btn btn-danger" data-item="@item.ID">Comprar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                    @if (ViewBag.mesagem != null)
+                    {
+                        <script type="text/javascript">
+                                    window.onload = function () {
+                                        alert("@ViewBag.mesagem");
+                                    };
+                        </script>
+                    }
+                </div>
+
+            
+
+        </main>
+        <footer>
+
+            <h4><i class="fas fa-copyright"></i> 2022 - Sistema Inteligente Gerenciador de Oficina.</h4>
+
+        </footer>
+
+        <script src="~/js/Produto.js"></script>
+        <script src="~/js/plugins.js"></script>
+        <script>
+            $(window).on("load", function () {
+                $('body').addClass('loaded');
+            });
+        </script>
+    </body>
+</html>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval");
+}

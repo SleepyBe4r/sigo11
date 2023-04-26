@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Projeto_SIGO_Web.Models.OrdemDeServico>
+
+    @{
+    ViewBag.Title = "Index";
+    }
+
+    <h2>Ordens De Serviço</h2>
+
+    <p>
+        @Html.ActionLink("Adicionar Ordem", "Create", new { @class = "btn btn-outline-primary" } )
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoPagamento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarroAtual.Placa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarroAtual.Cliente.Nome)
+            </th>
+            <th>Ações</th>
+        </tr>
+
+        @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoPagamento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarroAtual.Placa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarroAtual.Cliente.Nome)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.ID },  new { @class = "btn btn-primary" }) |
+                <button type="button" class="btn btn-danger" data-item="@item.ID">Excluir</button>
+            </td>
+        </tr>
+}
+
+    </table>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        <script src="~/js/Mascara.js"></script>
+        <script src="~/js/OrdemDeServico.js"></script>
+    }

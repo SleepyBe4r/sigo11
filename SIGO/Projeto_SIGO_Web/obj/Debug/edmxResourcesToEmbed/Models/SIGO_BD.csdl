@@ -1,0 +1,363 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Projeto_SIGOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CarroAtual">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Marca" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Modelo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Ano" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="Valvulas" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Versao" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Placa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="IDCliente" Type="Int32" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK__CarroAtua__IDCli__6ABAD62E" FromRole="CarroAtual" ToRole="Cliente" />
+    <NavigationProperty Name="OrdemDeServico" Relationship="Self.FK__OrdemDeSe__IDCar__02925FBF" FromRole="CarroAtual" ToRole="OrdemDeServico" />
+  </EntityType>
+  <EntityType Name="Cidade">
+    <Key>
+      <PropertyRef Name="CidadeId" />
+    </Key>
+    <Property Name="CidadeId" Type="Int32" Nullable="false" />
+    <Property Name="Nome" Type="String" MaxLength="38" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EstadoId" Type="Byte" />
+    <Property Name="Capital" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Endereco" Relationship="Self.FK__Endereco__IDCida__336AA144" FromRole="Cidade" ToRole="Endereco" />
+    <NavigationProperty Name="Estado" Relationship="Self.FK_Cidade_Estado" FromRole="Cidade" ToRole="Estado" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Tipo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Celular" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CPF_CNPJ" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="IDEndereco" Type="Int32" />
+    <NavigationProperty Name="CarroAtual" Relationship="Self.FK__CarroAtua__IDCli__6ABAD62E" FromRole="Cliente" ToRole="CarroAtual" />
+    <NavigationProperty Name="Endereco" Relationship="Self.FK__Cliente__IDEnder__67DE6983" FromRole="Cliente" ToRole="Endereco" />
+    <NavigationProperty Name="Login" Relationship="Self.FK__Login__IDCliente__10E07F16" FromRole="Cliente" ToRole="Login" />
+  </EntityType>
+  <EntityType Name="Endereco">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Rua" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="Numero" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="Complemento" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="IDCidade" Type="Int32" />
+    <NavigationProperty Name="Cidade" Relationship="Self.FK__Endereco__IDCida__336AA144" FromRole="Endereco" ToRole="Cidade" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK__Cliente__IDEnder__67DE6983" FromRole="Endereco" ToRole="Cliente" />
+  </EntityType>
+  <EntityType Name="Estado">
+    <Key>
+      <PropertyRef Name="EstadoId" />
+    </Key>
+    <Property Name="EstadoId" Type="Byte" Nullable="false" />
+    <Property Name="Sigla" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Cidade" Relationship="Self.FK_Cidade_Estado" FromRole="Estado" ToRole="Cidade" />
+  </EntityType>
+  <EntityType Name="Fornecedor">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Telefone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CNPJ" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Produto" Relationship="Self.FK__Produto__IDForne__6E8B6712" FromRole="Fornecedor" ToRole="Produto" />
+  </EntityType>
+  <EntityType Name="ItensOrdem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tipo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Garantia" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Quantidade" Type="Int32" />
+    <Property Name="Desconto" Type="Decimal" Precision="12" Scale="2" />
+    <Property Name="ValorTotal" Type="Decimal" Precision="12" Scale="2" />
+    <Property Name="Obs" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Defeito" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="IDProduto" Type="Int32" />
+    <Property Name="IDServico" Type="Int32" />
+    <Property Name="IDOrdemDeServico" Type="Int32" />
+    <NavigationProperty Name="OrdemDeServico" Relationship="Self.FK__ItensOrde__IDOrd__075714DC" FromRole="ItensOrdem" ToRole="OrdemDeServico" />
+    <NavigationProperty Name="Produto" Relationship="Self.FK__ItensOrde__IDPro__056ECC6A" FromRole="ItensOrdem" ToRole="Produto" />
+    <NavigationProperty Name="Servico" Relationship="Self.FK__ItensOrde__IDSer__0662F0A3" FromRole="ItensOrdem" ToRole="Servico" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Senha" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Tipo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="IDCliente" Type="Int32" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK__Login__IDCliente__10E07F16" FromRole="Login" ToRole="Cliente" />
+  </EntityType>
+  <EntityType Name="Marca">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Produto" Relationship="Self.FK__Produto__IDMarca__6D9742D9" FromRole="Marca" ToRole="Produto" />
+  </EntityType>
+  <EntityType Name="OrdemDeServico">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Data" Type="DateTime" Precision="0" />
+    <Property Name="TipoPagamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IDCarroAtual" Type="Int32" />
+    <NavigationProperty Name="CarroAtual" Relationship="Self.FK__OrdemDeSe__IDCar__02925FBF" FromRole="OrdemDeServico" ToRole="CarroAtual" />
+    <NavigationProperty Name="ItensOrdem" Relationship="Self.FK__ItensOrde__IDOrd__075714DC" FromRole="OrdemDeServico" ToRole="ItensOrdem" />
+  </EntityType>
+  <EntityType Name="Produto">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Valor" Type="Decimal" Precision="12" Scale="2" />
+    <Property Name="Estoque" Type="Int32" />
+    <Property Name="EstoqueMaximo" Type="Int32" />
+    <Property Name="EstoqueMinimo" Type="Int32" />
+    <Property Name="IDMarca" Type="Int32" />
+    <Property Name="IDFornecedor" Type="Int32" />
+    <NavigationProperty Name="Fornecedor" Relationship="Self.FK__Produto__IDForne__6E8B6712" FromRole="Produto" ToRole="Fornecedor" />
+    <NavigationProperty Name="ItensOrdem" Relationship="Self.FK__ItensOrde__IDPro__056ECC6A" FromRole="Produto" ToRole="ItensOrdem" />
+    <NavigationProperty Name="Marca" Relationship="Self.FK__Produto__IDMarca__6D9742D9" FromRole="Produto" ToRole="Marca" />
+    <Property Name="Foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Servico">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descricao" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="Valor" Type="Decimal" Precision="12" Scale="2" />
+    <Property Name="Vencimento" Type="Int32" />
+    <NavigationProperty Name="ItensOrdem" Relationship="Self.FK__ItensOrde__IDSer__0662F0A3" FromRole="Servico" ToRole="ItensOrdem" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK__CarroAtua__IDCli__6ABAD62E">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+    <End Role="CarroAtual" Type="Self.CarroAtual" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CarroAtual">
+        <PropertyRef Name="IDCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdemDeSe__IDCar__02925FBF">
+    <End Role="CarroAtual" Type="Self.CarroAtual" Multiplicity="0..1" />
+    <End Role="OrdemDeServico" Type="Self.OrdemDeServico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CarroAtual">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrdemDeServico">
+        <PropertyRef Name="IDCarroAtual" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Endereco__IDCida__336AA144">
+    <End Role="Cidade" Type="Self.Cidade" Multiplicity="0..1" />
+    <End Role="Endereco" Type="Self.Endereco" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cidade">
+        <PropertyRef Name="CidadeId" />
+      </Principal>
+      <Dependent Role="Endereco">
+        <PropertyRef Name="IDCidade" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cidade_Estado">
+    <End Role="Estado" Type="Self.Estado" Multiplicity="0..1" />
+    <End Role="Cidade" Type="Self.Cidade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estado">
+        <PropertyRef Name="EstadoId" />
+      </Principal>
+      <Dependent Role="Cidade">
+        <PropertyRef Name="EstadoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cliente__IDEnder__67DE6983">
+    <End Role="Endereco" Type="Self.Endereco" Multiplicity="0..1" />
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Endereco">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Cliente">
+        <PropertyRef Name="IDEndereco" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Login__IDCliente__10E07F16">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+    <End Role="Login" Type="Self.Login" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Login">
+        <PropertyRef Name="IDCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Produto__IDForne__6E8B6712">
+    <End Role="Fornecedor" Type="Self.Fornecedor" Multiplicity="0..1" />
+    <End Role="Produto" Type="Self.Produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fornecedor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Produto">
+        <PropertyRef Name="IDFornecedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ItensOrde__IDOrd__075714DC">
+    <End Role="OrdemDeServico" Type="Self.OrdemDeServico" Multiplicity="0..1" />
+    <End Role="ItensOrdem" Type="Self.ItensOrdem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdemDeServico">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ItensOrdem">
+        <PropertyRef Name="IDOrdemDeServico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ItensOrde__IDPro__056ECC6A">
+    <End Role="Produto" Type="Self.Produto" Multiplicity="0..1" />
+    <End Role="ItensOrdem" Type="Self.ItensOrdem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ItensOrdem">
+        <PropertyRef Name="IDProduto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ItensOrde__IDSer__0662F0A3">
+    <End Role="Servico" Type="Self.Servico" Multiplicity="0..1" />
+    <End Role="ItensOrdem" Type="Self.ItensOrdem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Servico">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ItensOrdem">
+        <PropertyRef Name="IDServico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Produto__IDMarca__6D9742D9">
+    <End Role="Marca" Type="Self.Marca" Multiplicity="0..1" />
+    <End Role="Produto" Type="Self.Produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Marca">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Produto">
+        <PropertyRef Name="IDMarca" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Projeto_SIGOEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CarroAtual" EntityType="Self.CarroAtual" />
+    <EntitySet Name="Cidade" EntityType="Self.Cidade" />
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+    <EntitySet Name="Endereco" EntityType="Self.Endereco" />
+    <EntitySet Name="Estado" EntityType="Self.Estado" />
+    <EntitySet Name="Fornecedor" EntityType="Self.Fornecedor" />
+    <EntitySet Name="ItensOrdem" EntityType="Self.ItensOrdem" />
+    <EntitySet Name="Login" EntityType="Self.Login" />
+    <EntitySet Name="Marca" EntityType="Self.Marca" />
+    <EntitySet Name="OrdemDeServico" EntityType="Self.OrdemDeServico" />
+    <EntitySet Name="Produto" EntityType="Self.Produto" />
+    <EntitySet Name="Servico" EntityType="Self.Servico" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK__CarroAtua__IDCli__6ABAD62E" Association="Self.FK__CarroAtua__IDCli__6ABAD62E">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="CarroAtual" EntitySet="CarroAtual" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdemDeSe__IDCar__02925FBF" Association="Self.FK__OrdemDeSe__IDCar__02925FBF">
+      <End Role="CarroAtual" EntitySet="CarroAtual" />
+      <End Role="OrdemDeServico" EntitySet="OrdemDeServico" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Endereco__IDCida__336AA144" Association="Self.FK__Endereco__IDCida__336AA144">
+      <End Role="Cidade" EntitySet="Cidade" />
+      <End Role="Endereco" EntitySet="Endereco" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cidade_Estado" Association="Self.FK_Cidade_Estado">
+      <End Role="Estado" EntitySet="Estado" />
+      <End Role="Cidade" EntitySet="Cidade" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cliente__IDEnder__67DE6983" Association="Self.FK__Cliente__IDEnder__67DE6983">
+      <End Role="Endereco" EntitySet="Endereco" />
+      <End Role="Cliente" EntitySet="Cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Login__IDCliente__10E07F16" Association="Self.FK__Login__IDCliente__10E07F16">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Login" EntitySet="Login" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Produto__IDForne__6E8B6712" Association="Self.FK__Produto__IDForne__6E8B6712">
+      <End Role="Fornecedor" EntitySet="Fornecedor" />
+      <End Role="Produto" EntitySet="Produto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ItensOrde__IDOrd__075714DC" Association="Self.FK__ItensOrde__IDOrd__075714DC">
+      <End Role="OrdemDeServico" EntitySet="OrdemDeServico" />
+      <End Role="ItensOrdem" EntitySet="ItensOrdem" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ItensOrde__IDPro__056ECC6A" Association="Self.FK__ItensOrde__IDPro__056ECC6A">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="ItensOrdem" EntitySet="ItensOrdem" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ItensOrde__IDSer__0662F0A3" Association="Self.FK__ItensOrde__IDSer__0662F0A3">
+      <End Role="Servico" EntitySet="Servico" />
+      <End Role="ItensOrdem" EntitySet="ItensOrdem" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Produto__IDMarca__6D9742D9" Association="Self.FK__Produto__IDMarca__6D9742D9">
+      <End Role="Marca" EntitySet="Marca" />
+      <End Role="Produto" EntitySet="Produto" />
+    </AssociationSet>
+    <EntitySet Name="mensagem" EntityType="Projeto_SIGOModel.mensagem" />
+  </EntityContainer>
+  <EntityType Name="mensagem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Numero" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="Mensagem1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

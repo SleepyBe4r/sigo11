@@ -1,0 +1,157 @@
+﻿@model Projeto_SIGO_Web.ViewModel.LoginViewModel
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/Cadastro_Login.css">
+    <title>Cadastro de clientes</title>
+</head>
+<body>
+    @using (Html.BeginForm("Cadastro_Login", "Login", FormMethod.Post))
+{
+    <main>
+        @*-- <header>Cadastrar cliente</header> --*@
+        @*----------------------------------------------- Seção Login -----------------------------------------------*@
+        <div class="login">
+            <div onsubmit="return false" class="content">
+                <h1>Login</h1>
+
+                @Html.EditorFor(model => model.Usuario, new { htmlAttributes = new { id="userName", placeholder="Usuario" } })
+                @Html.ValidationMessageFor(model => model.Usuario, "", new { @class = "text-danger" })
+
+
+                @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { placeholder="Senha", id="password", type="password" } })
+                @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+
+
+                @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { placeholder="Confirme a Senha", id="passwordConfirm", type="password" } })
+                @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+
+
+                <div class="LoginButton">
+                    <input type="button" value="Próximo" class="clienteL" id="cliente"   onclick="VerificaLogin(id)">
+                </div>
+            </div>
+        </div>
+
+        @*--------------------------------------------- Seção Clientes ---------------------------------------------*@
+        <div class="cliente">
+            <div onsubmit="return false" class="content">
+                <h1>Cliente</h1>
+
+                @Html.EditorFor(model => model.Nome_Cliente, new { htmlAttributes = new { placeholder="Nome", id="clienteName" } })
+                @Html.ValidationMessageFor(model => model.Nome_Cliente, "", new { @class = "text-danger" })
+                <br>
+
+
+                @Html.EditorFor(model => model.Celular, new { htmlAttributes = new { placeholder="Celular", id="Fone" } })
+                @Html.ValidationMessageFor(model => model.Celular, "", new { @class = "text-danger" })
+                <br>
+
+
+                <fieldset id="tipoPessoa">
+                    Pessoa:
+                    <input id="tipoF" type="radio" name="tipo" value="F" checked />Fisica
+                    <input id="tipoJ" type="radio" name="tipo" value="J" />Jurídica <br>
+                </fieldset>
+
+
+                @Html.EditorFor(model => model.CPF_CNPJ, new { htmlAttributes = new { placeholder="CPF/CNPJ", id="CPFCNPJ" } })
+                @Html.ValidationMessageFor(model => model.CPF_CNPJ, "", new { @class = "text-danger" })
+                <br>
+
+
+
+                <div class="ClienteButton">
+                    <input type="button" value="voltar" id="login" onclick="showView(id)">
+                    <input type="button" value="Próximo" class="AvancaEndereco" id="endereco" onclick="VerificaCliente(id)">
+                </div>
+            </div>
+        </div>
+        @*----------------------------------------------- Seção Endereço -----------------------------------------------*@
+        <div class="endereco">
+
+            <div onsubmit="return false" class="content">
+                <h1>Endereço</h1>
+               
+                <input id="EnderecoCEP" name="EnderecoCEP" class="input-text" placeholder="CEP" type="number">
+
+                @Html.DropDownListFor(model => model.EstadoId, ViewBag.EstadoId as IEnumerable<SelectListItem>, htmlAttributes: new { @id = "EstadoUF", @name = "EstadoUF" })
+
+                @Html.DropDownListFor(model => model.CidadeId, ViewBag.CidadeId as IEnumerable<SelectListItem>, htmlAttributes: new { @id = "IDCidade", @name = "IDCidade" })                
+
+
+                @Html.EditorFor(model => model.Rua, new { htmlAttributes = new { id = "EnderecoRua", name = "EnderecoRua", @class = "input-text", placeholder = "Rua", type = "text" } })
+                @Html.ValidationMessageFor(model => model.Rua, "", new { @class = "text-danger" })
+
+
+                @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { id = "EnderecoNumero", name = "EnderecoNumero", @class = "input-text", placeholder = "N°", type = "number" } })
+                @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
+
+
+                @Html.EditorFor(model => model.Complemento, new { htmlAttributes = new { id = "EnderecoComplemento", name = "EnderecoComplemento", @class = "input-text", placeholder = "Complemento", type = "text" } })
+                @Html.ValidationMessageFor(model => model.Complemento, "", new { @class = "text-danger" })
+
+
+                <div class="EnderecoButton">
+                    <input type="button" value="voltar" class="clienteC" id="cliente" onclick="showView(id)">
+                    <input type="button" value="Próximo" id="carro" onclick="VerificaEndereco(id)">
+                </div>
+
+
+            </div>
+        </div>
+        
+        @*----------------------------------------------- Seção Carro -----------------------------------------------*@
+        <div class="carro">
+            <div onsubmit="return false" class="content">
+                <h1>Carros</h1>
+
+
+                @Html.EditorFor(model => model.Marca, new { htmlAttributes = new { id="CarroMarca", name="CarroMarca", @class="input-text", placeholder="Marca", type="text" }})
+                @Html.ValidationMessageFor(model => model.Marca, "", new { @class = "text-danger" })
+
+
+                @Html.EditorFor(model => model.Modelo, new { htmlAttributes = new { id="CarroNome", name="CarroNome", @class="input-text", placeholder="Nome", type="text" }})
+                @Html.ValidationMessageFor(model => model.Modelo, "", new { @class = "text-danger" })
+
+
+                @Html.EditorFor(model => model.Ano, new { htmlAttributes = new { id="CarroAno", name="CarroAno", @class="input-text", placeholder="Ano", type="number" }})
+                @Html.ValidationMessageFor(model => model.Ano, "", new { @class = "text-danger" })
+
+
+                @Html.EditorFor(model => model.Placa, new { htmlAttributes = new { id="CarroPlaca", name="CarroPlaca", @class="input-text", placeholder="Placa" }})
+                @Html.ValidationMessageFor(model => model.Placa, "", new { @class = "text-danger" })
+
+                <select id="Valvulas" name="Valvulas">
+                    <option value="8V" >8V</option>
+                    <option value="16V">16V</option>
+                </select>
+
+                <select id="Versao" name="Versao">
+                    <option value="1.0" >1.0</option>
+                    <option value="1.6" >1.6</option>
+                    <option value="1.8" >1.8</option>
+                    <option value="2.0" >2.0</option>
+                </select>
+
+                <div class="CarButton">
+                    <input type="button" value="voltar" class="VoltaEndereco" id="endereco" onclick="showView(id)">
+                    <button id="finalBtn" onclick="VerificaCarro(id)">Finalizar cadastro</button>
+                </div>
+            </div>
+        </div>
+    </main>
+}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../js/Cadastro_Login.js"></script>
+</body>
+</html>

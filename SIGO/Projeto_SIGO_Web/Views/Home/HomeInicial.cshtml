@@ -1,0 +1,205 @@
+﻿@model Projeto_SIGO_Web.Models.mensagem
+
+@{
+    Layout = null;
+    ViewBag.Title = "HomeInicial";
+}
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="~/fonts/FontAwesome/all.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/HomeInicial.css">
+    <link rel="stylesheet" href="~/css/carousel.css" />
+    <link rel="icon" href="~/Icons/chave-inglesa.png" >
+    <title>Olá, seja bem vindo!</title>
+</head>
+<body>
+    <header>
+        <div class="linha">
+            <div class="logo">
+                <img src="~/Icons/SIGO_logoTipo.png" alt="">
+            </div>
+
+            <div class="h-middle"></div>
+
+            <div class="h-right">
+                <div class="botoes">
+                    <ul>
+                        <li title="Cadastrar cliente"><a href="/Login/Cadastro_Login"><i class="fa-solid fa-user-plus"></i></a></li>
+                        <li title="Realizar login"><a href="/Login/Index"><i class="fa-solid fa-user"></i></a></li>
+                        <li title="Home"><a href="/Home/HomeInicial.cshtml"><i class="fas fa-house"></i></a></li>
+                        <li title="Menu principal"><button onclick="MenuOpen()"><i class="fas fa-list-ul"></i></button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <nav>
+            <ul class="box">
+                <li class="line-close" onclick="MenuClose()"><a class="btn-close"><i class="fas fa-xmark"></i></a></li>
+                <li><a href="#about-us">Sobre</a></li>
+                <li><a href="#services">Serviços</a></li>
+                <li><a href="#">Cadastrar</a></li>
+                <li><a href="#">Logar</a></li>
+                <li><a href="#contacts">Contatos</a></li>
+
+            </ul>
+        </nav>
+
+        <div data-interval="3000" id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100  " src="~/Images/Bem_Vindo.png" alt="">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100  " src="~/Images/O_seu....png" alt="">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Anterior</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Próximo</span>
+            </a>
+        </div>
+
+        <div id="about-us">
+            <div class="left">
+            </div>
+            <div class="right">
+                <h1>Sobre Nós</h1>
+                <p>Este site foi criado com o intuito de ajudar no gerenciamento de oficinas!</p>
+                <p>Desenvolvedores: Alexandre Alves Molina, Cayo Henrique dos Santos Dias e Gabriel Rocha Silva.</p>
+                <p>Equipe: AUTODEV.</p>
+                <p>Tecnico em informatica - turma: TI-48</p>
+
+            </div>
+        </div>
+
+        <div id="services">
+
+            <h1>Nossos Produtos</h1>
+
+            <div class="container">
+                <div class="CardL">
+                    <div class="card1">
+
+                        <img src="~/Images/pneu.jfif" alt="">
+
+                        <h3 class="title">Pneu Pirelli</h3>
+                        <label>R$ 510,50</label>
+                    </div>
+                    <div class="card2">
+                        <img src="~/Images/patilha.jfif" alt="">
+
+                        <h3 class="title">Pastilha de freio</h3>
+                        <label>R$ 198,00</label>
+                    </div>
+                    <div class="card3">
+                        <img src="~/Images/farol.jfif" alt="">
+
+                        <h3 class="title">Farol</h3>
+                        <label>R$ 700,00</label>
+                    </div>
+                    <div class="card4">
+                        <img src="~/Images/coreia.jfif" alt="">
+
+                        <h3 class="title">Correia</h3>
+                        <label>R$ 199,99</label>
+                    </div>
+                </div>
+
+
+                <div class="CardR">
+                    <div class="card5">
+                        <img src="~/Images/lampada.jfif" alt="">
+
+                        <h3 class="title">Lampadas</h3>
+                        <label>R$ 150,00</label>
+                    </div>
+                    <div class="card6">
+                        <img src="~/Images/limpador.jfif" alt="">
+
+                        <h3 class="title">Limpadores</h3>
+                        <label>R$ 99,99</label>
+                    </div>
+                    <div class="card7">
+                        <img src="~/Images/Parachoque.jfif" alt="">
+
+                        <h3 class="title">Parachoque</h3>
+                        <label>R$ 800,00</label>
+                    </div>
+                    <div class="card8">
+                        <img src="~/Images/escapamento.jfif" alt="">
+
+                        <h3 class="title">Escapamento</h3>
+                        <label>R$ 270,00</label>
+                    </div>
+                </div>
+            </div>
+
+             @Html.ActionLink("Ver Mais", "ProdutoServicos", "Home")
+
+        </div>
+
+        <div id="contacts">
+            <div class="left">
+                @using (Html.BeginForm("HomeInicial", "Home", FormMethod.Post))
+                {
+                        @*<h1>Contact us</h1>*@
+
+                        @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @placeholder = "Nome" } })
+                        @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+
+
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @placeholder = "Email" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+
+                        @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { @placeholder = "Nº de Telefone" } })
+                        @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
+
+
+                        @Html.TextAreaFor(model => model.Mensagem1, new { @placeholder = "Mensagem" })
+                        @Html.ValidationMessageFor(model => model.Mensagem1, "", new { @class = "text-danger" })
+
+                        <button onclick="addToTable(this)" >enviar <i class="fas fa-paper-plane"></i></button>
+                }
+
+            </div>
+            <div class="right">
+                <div class="placa1">
+                    <div class="placa2">
+                        <div class="placa3">
+                            <h1 style="color: white;"> Contate-nos</h1>
+                            <h1 style="color: white;"><i class="fa-solid fa-turn-down fa-rotate-90"></i></h1>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <footer>
+            <h4><i class="fas fa-copyright"></i> 2022 - Sistema Inteligente Gerenciador de Oficinas</h4>
+        </footer>
+    </main>
+    <script src="~/js/HomeInicial.js"></script>
+</body>
+</html>

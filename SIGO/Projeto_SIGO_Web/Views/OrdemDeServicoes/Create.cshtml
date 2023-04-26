@@ -1,0 +1,132 @@
+﻿@model Projeto_SIGO_Web.ViewModel.OrdemDeServicoViewModel
+
+@{
+    ViewBag.Title = "Ordem De Serviço";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../js/all.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="~/css/OrdemDeServico.css">
+        <title>Document</title>
+    </head>
+    <body>
+        <header></header>
+        <main>
+            @using (Html.BeginForm("ProdutoServicos", "Home", FormMethod.Get, new { }))
+            {
+                @Html.HiddenFor(model => model.ID_Item, new { @id = "itens_ID" })
+                @Html.HiddenFor(model => model.Tipo, new { @id = "itens_Tipo" })
+                <div class="ordem">
+                    <fieldset class="content">
+                        <legend><h1>Ordem De Serviço</h1></legend>
+                        <label for="IDCliente"><h2>Cliente:</h2></label> <br>
+                        @Html.DropDownListFor(model => model.IDCliente, ViewBag.IDCliente as IEnumerable<SelectListItem>, "Clientes", htmlAttributes: new { @id = "cbCliente", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.IDCliente, "", new { @class = "text-danger" })
+                        <br>
+
+                        <label for="IDCarroAtual"><h2>Carro:</h2></label> <br>
+                        <select id="cbPlaca" name="IDCarroAtual" class="form-control">
+                            <option disabled selected>Selecione um Cliente</option>
+                        </select>
+                        @Html.ValidationMessageFor(model => model.IDCarroAtual, "", new { @class = "text-danger" })
+                        <br>
+
+                        <label for="TipoPagamento"><h2>TipoPagamento:</h2></label> <br>
+                        <select id="TipoPagamento" name="TipoPagamento" class="form-control">
+                            <option value="DINHEIRO">Dinheiro</option>
+                            <option value="PIX">PIX</option>
+                            <option value="DEBITO">Debito</option>
+                            <option value="CREDITO">Credito</option>
+                        </select>
+                        <br>
+
+                        <button class="btn btn-danger">Cancelar Ordem</button>
+                        <input type="button" id="Itens_Open" class="btn btn-success" onclick="ShowView(id)" value="Abrir Ordem" />
+
+                    </fieldset>
+                </div>
+
+                <div class="itens">
+                    <fieldset class="content">
+                        <legend><h1>Itens Da Ordem</h1></legend>
+                        <div class="left">
+                            <table id="table" class="table">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Tipo</th>
+                                    <th>Descrição</th>
+                                    <th>Quantidade</th>
+                                    <th>Desconto</th>
+                                    <th>Valor Uni</th>
+                                    <th>Valor Total</th>
+                                </tr>
+
+                            </table>
+                        </div>
+                        <div class="right">
+                            <input type="button" id="prod_Serv_Add" class="btn btn-info" onclick="ShowView(id)" value="Adicionar Item" />
+                            <input type="button" id="Ordem_Finish" class="btn btn-success" onclick="Finalizar_Ordem(id)" value="Finalizar Ordem" />
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="itens_fake"></div>
+                <div class="back_Produtos"></div>
+                <div class="produtos">
+                    <fieldset class="content">
+                        <legend><h1>Produtos/Serviços</h1></legend>
+                        <select id="cbTipo" name="Tipo" class="form-control">
+                            <option disabled selected>Selecione um Tipo</option>
+                            <option value="S">Servico</option>
+                            <option value="P">Produto</option>
+                        </select>
+                        <br />
+
+                        <label for="Quantidade">Quantidade:</label>
+                        <input type="number" name="Quantidade" id="Quantidade">
+                        <br />
+
+                        <label for="Desconto">Desconto:</label>
+                        <input type="number" name="Desconto" id="Desconto">
+                        <br />
+
+                        <select id="cbPS" name="Prod_Serv" class="form-control">
+                            <option disabled selected>Selecione um Tipo</option>
+                        </select>
+                        <input type="button" class="btn btn-danger" onclick="ShowView(id)" value="Sair" />
+                        <input type="button" class="btn btn-success" onclick="AdicionarProd_Serv()" value="Adicionar" />
+                    </fieldset>
+                </div>
+
+                <div class="back_Ordem_Finish"></div>
+                <div class="Ordem_Finish">
+                    <fieldset class="content">
+                        <legend><h1>Finalizar Ordem</h1></legend>
+
+                        <label for="Valor_Total">Valor Total:</label>
+                        <input type="text" name="Valor_Total" id="Valor_Total" dir="rtl">
+                        <br />
+
+
+
+                        <input type="button" class="btn btn-danger" onclick="ShowView(id)" value="Sair" />
+                        <button class="btn btn-success">Finalizar</button>
+                    </fieldset>
+                </div>
+            }
+
+        </main>
+        <footer>
+            <h4><i class="fas fa-copyright"></i> 2022 - Sistema Inteligente Gerenciador de Oficina.</h4>
+        </footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="~/js/OrdemDeServico.js"></script>
+    </body>
+</html>

@@ -1,0 +1,595 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --MenuWidth: 0vw;
+}
+
+body {
+    min-height: 100vh;
+    width: 100%;
+    background-color: #fff;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+/* ---------- Header ---------- */
+
+header {
+    padding: 2.5vh;
+    height: 15vh;
+    background-color: gainsboro;
+    border-radius: 30px;
+    width: inherit;
+    display: flex;
+}
+
+.linha {
+    width: calc(100% - 2vh);
+    display: flex;
+}
+
+/* ---------- Header-Left ---------- */
+
+.logo {
+    width: 20%;
+}
+
+    .logo img {
+        height: 60px;
+        width: 120px;
+    }
+/* ---------- Header-Middle ---------- */
+
+.h-middle {
+    width: 55%;
+}
+
+/* ---------- Header-Right ---------- */
+
+.h-right {
+    width: 25%;
+    background-color: #0f98f8;
+    border-radius: 30px;
+}
+
+.line-close{
+    cursor:pointer;
+}
+
+
+.botoes { 
+    width: 100%;
+    display: flex;
+    float: right;
+}
+
+    .botoes ul li:hover {
+        color: black;
+    }
+
+    .botoes ul {
+    
+        list-style: none;
+        display: flex;
+        width: auto;
+        padding-left: 5%;
+    }
+
+        .botoes ul li {
+            border: none;
+            background-color: transparent;
+            height: 10vh;
+            width: auto;                        
+        }
+
+            .botoes ul li a {
+                
+                display: inline-block;
+                padding: 0vh 3vh;
+                height: inherit;
+                font-size: 4vh;
+                color: #fff;
+                line-height: 10vh;
+            }
+
+            .botoes ul li i {
+                display: inline-block;
+                padding: 0vh 3vh;
+                height: inherit;
+                font-size: 4vh;
+                color: #fff;
+                line-height: 10vh;
+            }
+
+            .botoes ul li i:hover {
+                cursor: pointer;
+            }
+
+    .botoes button {
+        border: none;
+        background-color: transparent;
+        height: 10vh;
+        width: 100%;
+        transition: all 0.1s;
+        font-size: 7vh;
+        color: #fff;
+        cursor: pointer;
+    }
+
+/* ---------- Main ---------- */
+
+main {
+    height: 90vh;
+    min-width: 75vw;
+}
+
+    /* ---------- Main-Left ---------- */
+
+    main nav {
+        background-color: black;
+        transition: all 0.5s ease;
+        height: 100%;
+        overflow: hidden;
+        width: 20vw;
+        position: fixed;
+        top: 0vh;
+        left: -20vw;
+        overflow-y: scroll;
+        transform: translate(var(--MenuWidth), 0);
+        display: grid;
+        z-index: 1;
+    }
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+main nav .box {
+    list-style-type: none;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    background-color: black;
+    border: none;
+    height: auto;
+}
+
+    main nav .box li {
+        padding: 5px;
+        padding-left: 2vw;
+        width: 100%;
+        height: 60px;
+        font-size: 30px;
+        text-align: left;
+        transition: all 0.5s ease;
+    }
+
+        main nav .box li:hover a {
+            color: #5474CB;
+        }
+
+        main nav .box li a {
+            text-decoration: none;
+            vertical-align: middle;
+            color: #fff;
+            transition: all .3s;
+        }
+
+    main nav .box .line-close {
+        padding: 5px;
+        padding-left: 2vw;
+        width: 100%;
+        height: 60px;
+        font-size: 30px;
+        text-align: right;
+        transition: all 0.5s ease;
+    }
+
+        main nav .box .line-close:hover a {
+            color: #5474CB;
+        }
+
+        main nav .box .line-close .btn-close {
+            text-decoration: none;
+            display: inline-block;
+            height: 40px;
+            width: 40px;
+            font-size: 40px;
+            margin-right: 2vw;
+            vertical-align: middle;
+            color: #fff;
+            transition: all .3s;
+        }
+
+/* ---------- Main-Right ---------- */
+
+/* -------------------- about-us -------------------- */
+
+main #about-us {
+    height: 600px;
+    width: inherit;
+    background-color: #fff;
+    transition: all .3s ease;
+    display: flex;
+}
+
+#about-us .left {
+    width: 50%;
+    height: inherit;
+    background-image: url("../Images/Sigo-web.png");
+    background-size: cover;
+    background-position: center;
+    padding: 80px;
+    background-origin: content-box;
+    background-repeat: no-repeat;
+}
+
+#about-us .right {
+    width: 50%;
+    height: inherit;
+    padding: 150px 0px 50px;
+}
+
+    #about-us .right h1 {
+        font-size: 8vh;
+        color: #0f98f8;
+        margin-bottom: 6vh;
+    }
+
+/* -------------------- our products -------------------- */
+
+
+
+/* -------------------- services -------------------- */
+
+main #services {
+    text-align:center;
+    height: 600px;
+    width: inherit;
+    background-color: #0f98f8;
+    border-radius: 80px;
+}
+
+/* -------------------- contacts -------------------- */
+main #contacts {
+    height: 850px;
+    width: inherit;
+    background-color: #f7f7f9;
+    display: flex;
+}
+
+#contacts .left {
+    width: 50%;
+    height: inherit;
+    padding: 5vw;
+    font-size: 4vh;
+}
+
+#contacts h1 {
+    color: #0f98f8;
+}
+
+#contacts .left input {
+    margin-top: 20px;
+    padding: 0px 10px;
+    width: 80%;
+    height: 10vh;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #cce9fe;
+    border-radius: 10px;
+}
+
+#contacts .left textarea {
+    margin-top: 20px;
+    padding: 5px 10px;
+    width: 80%;
+    height: 30vh;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #cce9fe;
+    border-radius: 10px;
+    resize: none;
+}
+
+#contacts .left button {
+    margin-top: 20px;
+    margin-left: 20%;
+    padding: 0px 10px;
+    width: 40%;
+    height: 10vh;
+    color: #fff;
+    font-size: 4vh;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #0f98f8;
+    background-color: #0f98f8;
+    border-radius: 30px;
+    transition: all 0.8s ease;
+}
+
+#contacts .left button:hover {
+    cursor: pointer;
+    background-color: black;
+    
+}
+
+#contacts .right {
+    margin-top:16px;
+    width: 50%;
+    height: inherit;
+    padding: 5vw;
+}
+
+
+.placa2 {
+    height: 130px;
+    width: 580px;
+    border-radius: 10px;
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0px 0px 2px 2px black;
+}
+
+.placa3 {
+    height: 110px;
+    width: 560px;
+    border-radius: 10px;
+    background-color: red;
+    padding: 10px 5vh;
+    text-align: center;
+}
+
+    .placa3 h1 {
+        color: white;
+    }
+        /* ---------- Footer ---------- */
+        footer {
+            padding: 5vh;
+            color: #fff;
+            text-align: center;
+            width: 100%;
+            height: 15vh;
+            background-color: #0f98f8;
+        }
+
+
+a {
+
+   color: black;
+   /*background-color: black;*/
+}
+
+
+
+@media (max-width: 480px) {
+
+    #about-us .left {
+        display: none;
+    }
+
+    #about-us .right {
+        width: 100%;
+        padding: 150px 20px 50px;        
+    }
+
+    #contacts .left {
+        width: 100%;
+        padding: 150px 20px 50px;
+    }
+
+    #contacts .left input {        
+        width: 100%;        
+    }
+
+    #contacts .left textarea {
+        width: 100%;
+    }
+
+    #contacts .left button {       
+        margin-left: 33%;        
+    }
+
+    #contacts .right{
+        display:none;
+    }
+
+    header {
+        padding: 2.5vh 2vh;        
+    }
+
+    .linha {
+        width: calc(100% - 0vh);     
+    }
+
+    .h-middle {        
+       width: 30%;
+    }
+
+    .h-right {
+        width: 100%;
+    }
+
+    .botoes ul {     
+        padding-left: 0%;
+    }
+
+    .botoes ul li a {        
+        padding: 0vh 2vh;        
+    }
+
+    main #services {
+        text-align: center;
+        height: 750px;
+        width: inherit;
+        background-color: #0f98f8;
+        border-radius: 80px;
+    }
+
+    footer {
+        font-size: 1rem;
+    }
+}
+
+
+
+@media(min-width: 481px) and (max-width: 767px) {
+        #about-us .left {
+            display: none;
+        }
+
+        #about-us .right {
+            width: 100%;
+            padding: 150px 20px 50px;
+        }
+
+        #contacts .left {
+            width: 100%;
+            padding: 150px 20px 50px;
+        }
+
+            #contacts .left input {
+                width: 100%;
+            }
+
+            #contacts .left textarea {
+                width: 100%;
+            }
+
+            #contacts .left button {
+                margin-left: 33%;
+            }
+
+        #contacts .right {
+            display: none;
+        }
+
+        header {
+            padding: 2.5vh 2vh;
+        }
+
+        .linha {
+            width: calc(100% - 0vh);
+        }
+
+        .h-middle {
+            width: 45%;
+        }
+
+        .h-right {
+            width: 38%;
+        }
+
+        .botoes ul {
+            padding-left: 0%;
+        }
+
+        .botoes ul li a {
+            padding: 0vh 2vh;
+        }
+
+        main #services {
+            text-align: center;
+            height: 800px;
+            width: inherit;
+            background-color: #0f98f8;
+            border-radius: 80px;
+        }
+    }
+
+
+
+@media(min-width: 768px) and (max-width: 1024px)
+{
+    #about-us .left {
+        display: none;
+    }
+
+    #about-us .right {
+        width: 100%;
+        padding: 150px 20px 50px;
+    }
+    
+
+    #contacts {
+        flex-direction: column-reverse;
+    }
+
+    #contacts .left {
+        width: 100%;
+        padding: 10px 20px 50px;
+    }
+
+        #contacts .left input {
+            width: 100%;
+        }
+
+        #contacts .left textarea {
+            width: 100%;
+        }
+
+        #contacts .left button {
+            margin-left: 33%;
+        }
+
+    #contacts .right {
+        height: auto;
+        padding:0;
+        width:100%;
+        justify-content: center;
+    }
+
+    header {
+        padding: 2.5vh 2vh;
+    }
+
+    .linha {
+        width: calc(100% - 0vh);
+    }
+
+    .h-middle {
+        width: 72%;
+    }
+
+    .h-right {
+        width: 38%;
+    }
+
+    .botoes ul {
+        margin-left:3%;
+        padding-left: 0%;
+    }
+
+        .botoes ul li a {
+            padding: 0vh 2vh;
+        }
+
+    main #services {
+        text-align: center;
+        height: 800px;
+        width: inherit;
+        background-color: #0f98f8;
+        border-radius: 80px;
+    }
+}
